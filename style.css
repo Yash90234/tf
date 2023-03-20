@@ -1,0 +1,74 @@
+
+
+  /* Global styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f7f7f7;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Navbar styles */
+.navbar-brand {
+  font-weight: bold;
+}
+
+.nav-link {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Card styles */
+.card-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.card li {
+  margin-bottom: 10px;
+}
+
+.card li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.card li .badge {
+  font-size: 0.8rem;
+  margin-left: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Progress bar styles */
+.progress {
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  transition: width 0.5s ease-in-out;
+}
+
+/* Buttons styles */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}

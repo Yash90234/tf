@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning Debit Card Payment Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <!-- Firebase SDK -->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js';
+      import { getDatabase, ref, push } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-database.js';
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD4oIxcwpDqbV6-xCYXQX-YAy_UOLRRXOY",
+            authDomain: "auth-2bef8.firebaseapp.com",
+            databaseURL: "https://auth-2bef8-default-rtdb.firebaseio.com",
+            projectId: "auth-2bef8",
+            storageBucket: "auth-2bef8.appspot.com",
+            messagingSenderId: "380500500350",
+            appId: "1:380500500350:web:f12aeb30c4b1e3b9561d2f" 
+  };
+
+  // Initialize Firebase app
+  const app = initializeApp(firebaseConfig);
+
+  // Get a reference to the database service
+  const db = getDatabase();
+
+  // Add event listener to form submit
+  const form = document.getElementById('payment-form');
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (form.checkValidity() === false) {
+      event.stopPropagation();
+      form.classList.add('was-validated');
+    } else {
+      // Get form values
+      const email =form.elements['email'].value;
+      const name = form.elements['name'].value;
+      
+      // Create a new payment object
+      const payment = {
+        name,
+        email    
+      };
+
+      // Add the payment object to the Firebase database
+      push(ref(db, 'query'), payment)
+        .then(() => {
+          // Reset the form and show a success message
+          form.reset();
+          form.classList.remove('was-validated');
+          document.getElementById('success-message').classList.remove('d-none');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  });
+</script>
+  </head>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">E-Learning</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="AfterSignIn.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Material.html">Material</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Que.html">Query</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Quehist.html">Query History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Payment.html">Payment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" onclick="logout()">Sign Out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <body>
+    <div class="container my-5">
+      <h1 class="mb-4">E-Learning Query Form</h1>
+      <form id="payment-form" novalidate>
+        <div class="mb-3">
+          <label for="name" class="form-label">Email id</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+          <div class="invalid-feedback">Please enter a valid email</div>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Query</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+          <div class="invalid-feedback">Please enter a valid Query</div>
+        </div>
+          <button type="submit" class="btn btn-primary">Submit Payment</button>
+        </form>
+        <div id="success-message" class="alert alert-success mt-4 d-none" role="alert">
+          Query Submitted!
+        </div>
+      </div>
+      <script src="welcome.js"></script> 
+      <footer class="bg-dark text-white py-3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h5>About Us</h5>
+              <p>E-Learning is an online education platform that provides courses in various fields of study. Our mission is to make education accessible to everyone.</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Follow Us</h5>
+      
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="#" class="text-light">
+                    <i class="fab fa-facebook-f fa-lg mr-3"></i>Facebook
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-light">
+                    <i class="fab fa-instagram fa-lg mr-3"></i>Instagram
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-light">
+                    <i class="fab fa-twitter fa-lg mr-3"></i>Twitter
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-light">
+                    <i class="far fa-envelope fa-lg mr-3"></i>Email
+                  </a>
+                </li>
+              </ul>
+            </div>
+        
+            <div class="col-md-4">
+              <h5>Contact Us</h5>
+              <ul class="list-unstyled">
+                <li><i class="fas fa-map-marker-alt"></i> 123 Main St, New York, NY 10001</li>
+                <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+                <li><i class="fas fa-envelope"></i> info@e-learning.com</li>
+              </ul>
+              <ul class="list-inline">
+                <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href="#"><i class="fas fa-envelope"></i></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col text-center">
+              <p>&copy; 2023 E-Learning. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
+    </body>
+  </html>
+  
+  
+  
+  
+  

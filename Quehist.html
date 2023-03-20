@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read Data from Firebase Database</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD4oIxcwpDqbV6-xCYXQX-YAy_UOLRRXOY",
+        authDomain: "auth-2bef8.firebaseapp.com",
+        databaseURL: "https://auth-2bef8-default-rtdb.firebaseio.com",
+        projectId: "auth-2bef8",
+        storageBucket: "auth-2bef8.appspot.com",
+        messagingSenderId: "380500500350",
+        appId: "1:380500500350:web:f12aeb30c4b1e3b9561d2f" };
+
+        // Initialize Firebase app
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the database service
+        const db = getDatabase();
+
+        // Define the Firebase reference to the data you want to read
+        const dataRef = ref(db, "query");
+
+        // Attach an event listener to the dataRef reference that listens for changes to the data
+        onValue(dataRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data);
+            // Display the data on the page, e.g. by updating the text of an HTML element
+            document.getElementById("data-display").textContent = JSON.stringify(data);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">E-Learning</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="AfterSignIn.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Material.html">Material</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Que.html">Query</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Quehist.html">Query History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Payment.html">Payment</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html" onclick="logout()">Sign Out</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+      </header>  
+
+    <h1>Read Data from Firebase Database</h1>
+    <p>The data from Firebase will be displayed here:</p>
+    <div id="data-display"></div>
+</body>
+<footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>E-Learning is an online education platform that provides courses in various fields of study. Our mission is to make education accessible to everyone.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Follow Us</h5>
+  
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#" class="text-light">
+                <i class="fab fa-facebook-f fa-lg mr-3"></i>Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-light">
+                <i class="fab fa-instagram fa-lg mr-3"></i>Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-light">
+                <i class="fab fa-twitter fa-lg mr-3"></i>Twitter
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-light">
+                <i class="far fa-envelope fa-lg mr-3"></i>Email
+              </a>
+            </li>
+          </ul>
+        </div>
+    
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Main St, New York, NY 10001</li>
+            <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+            <li><i class="fas fa-envelope"></i> info@e-learning.com</li>
+          </ul>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col text-center">
+          <p>&copy; 2023 E-Learning. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>

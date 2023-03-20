@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>User Dashboard - E-Learning Website</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">E-Learning</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="AfterSignIn.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Material.html">Material</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Que.html">Query</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="Quehist.html">Query History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="payment" href="Payment.html">Payment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" onclick="logout()">Sign Out</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header> 
+  <center><div style="margin:100px">
+    <span id="user" class="message">Hello, < email-id ></Email-id></span>
+    <div class="success"><span>Welcome to auth starter, You are successfully loged in!!!</span></div><br/>
+</div></center>
+<main>
+    <section class="container my-5">
+        <h2 class="text-center mb-5">Courses</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Course Title</h5>
+                <p class="card-text">Description of the course goes here.</p>
+                <a href="Payment.html" class="btn btn-primary" >Enroll Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Course Title</h5>
+                <p class="card-text">Description of the course goes here.</p>
+                <a href="#" class="btn btn-primary">Enroll Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Course Title</h5>
+                <p class="card-text">Description of the course goes here.</p>
+                <a href="#" class="btn btn-primary">Enroll Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+          </section>
+</main>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
+
+<script src="firebase.js"></script>
+<script src="welcome.js"></script>     
+
+ 
+  <footer class="bg-dark text-white py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5>About Us</h5>
+          <p>E-Learning is an online education platform that provides courses in various fields of study. Our mission is to make education accessible to everyone.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase">Follow Us</h5>
+  
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#" class="text-light">
+                <i class="fab fa-facebook-f fa-lg mr-3"></i>Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-light">
+                <i class="fab fa-instagram fa-lg mr-3"></i>Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-light">
+                <i class="fab fa-twitter fa-lg mr-3"></i>Twitter
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-light">
+                <i class="far fa-envelope fa-lg mr-3"></i>Email
+              </a>
+            </li>
+          </ul>
+        </div>
+    
+        <div class="col-md-4">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Main St, New York, NY 10001</li>
+            <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+            <li><i class="fas fa-envelope"></i> info@e-learning.com</li>
+          </ul>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+            <li class="list-inline-item"><a href="#"><i class="fas fa-envelope"></i></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col text-center">
+          <p>&copy; 2023 E-Learning. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" ></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" ></script>
+</body>
+</html>
